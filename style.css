@@ -562,7 +562,77 @@ ul {
     .stats-inner {
         flex-direction: column;
     }
+    .stat-item {
+        border-right: none;
+        border-bottom: 1px solid #f0f0f0;
+        padding: 30px 20px;
+    }
     .nav ul {
         display: none;
+    }
+    .top-bar-inner {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .contact-info span {
+        margin-right: 0;
+    }
+    .header {
+        position: relative;
+        top: 0;
+        background: rgba(0,0,0,0.4);
+    }
+    .header-inner {
+        padding: 15px 0;
+        flex-direction: column;
+        gap: 15px;
+    }
+    .logo {
+        font-size: 28px;
+    }
+    .hero {
+        height: auto;
+        min-height: auto;
+        padding: 60px 0;
+    }
+    .hero-inner {
+        margin-top: 0;
+    }
+    .hero-content h1 {
+        font-size: 36px;
+        margin-bottom: 15px;
+    }
+    .hero-card {
+        width: 100%;
+        padding: 25px 20px;
+    }
+    .stats {
+        margin-top: 30px;
+    }
+    .main-img {
+        padding-right: 0;
+    }
+    .sub-img {
+        position: relative;
+        width: 100%;
+        bottom: 0;
+        right: 0;
+        margin-top: 15px;
+        border: none;
+    }
+    .icon-circle {
+        display: none;
+    }
+    .section-padding {
+        padding: 60px 0;
+    }
+    .about-content h2, .section-header h2 {
+        font-size: 32px;
     }
 }
