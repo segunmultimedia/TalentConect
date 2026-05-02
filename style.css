@@ -571,6 +571,10 @@ ul {
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    align-self: stretch;
 }
 
 .cause-card:hover {
@@ -581,14 +585,17 @@ ul {
 .cause-img img {
     width: 100%;
     height: auto;
-    aspect-ratio: 4/3;
+    aspect-ratio: 3/2;
     object-fit: cover;
-    object-position: top center;
+    object-position: center;
 }
 
 .cause-content {
     padding: 35px 30px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .cause-content .badge {
@@ -616,7 +623,7 @@ ul {
 }
 
 .cause-content .btn {
-    margin-top: 10px;
+    margin-top: auto;
 }
 
 /* Responsive design adjustments */
