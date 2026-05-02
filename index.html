@@ -132,11 +132,11 @@
             <div class="causes-grid">
                 <div class="cause-card">
                     <div class="cause-img">
-                        <img src="https://images.pixieset.com/259375011/cc4ca2490784cbe67ae4b78b79576b0d-xxlarge.jpg" alt="Dance Ministers Conference">
+                        <img src="https://images.pixieset.com/330523111/6ff1e330144ddfa548211e9b6c6d4d76-xlarge.jpg" alt="Dance Ministers Conference">
                     </div>
                     <div class="cause-content text-center" style="padding: 25px 30px;">
                         <h3>Dance Ministers Conference</h3>
-                        <p>a powerful and educative time of learning and empowerment among all gospel dancers in africa</p>
+                        <p>A powerful and educative time of learning and empowerment among all Gospel dancers in Africa.</p>
                         <a href="https://segunwebmultimedia.pixieset.com/ghdanceministers/" target="_blank" class="btn btn-secondary btn-full">View Album</a>
                     </div>
                 </div>
@@ -150,9 +150,8 @@
                         <a href="gallery.html" class="btn btn-secondary btn-full">Watch Video</a>
                     </div>
                 </div>
-                <div class="cause-card">
                     <div class="cause-img">
-                        <img src="https://images.pixieset.com/330523111/e82aeea8a17e71836fa6f94528975ee0-xxlarge.jpg" alt="Night of Worship">
+                        <img src="https://images.pixieset.com/330523111/e82aeea8a17e71836fa6f94528975ee0-xxlarge.jpg" alt="Night of Worship" style="object-position: top;">
                     </div>
                     <div class="cause-content text-center" style="padding: 25px 30px;">
                         <h3>Night of Worship</h3>
@@ -205,6 +204,9 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top"><i class="fas fa-chevron-up"></i></button>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Mobile Menu Toggle
@@ -248,6 +250,19 @@
             };
             
             setupAutoSlider('.causes-grid');
+        });
+
+        // Back to Top functionality
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
 </body>
