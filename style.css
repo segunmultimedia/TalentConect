@@ -680,13 +680,14 @@ html, body {
     }
 
     .cause-card {
-        min-width: 70vw;
+       width: 100%;
         scroll-snap-align: center;
         flex-shrink: 0;
     }
     
     .cause-img {
         height: 190px;
+       
     }
 
     /* Stats Section - 2x2 grid instead of 1 column stack */
