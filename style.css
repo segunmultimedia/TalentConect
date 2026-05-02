@@ -542,60 +542,73 @@ ul {
     font-weight: 800;
 }
 
+/* Gallery Container & Grid */
 .causes-grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 30px;
-    padding-bottom: 20px;
-    scrollbar-width: thin;
-}
-.causes-grid::-webkit-scrollbar {
-    height: 6px;
-}
-.causes-grid::-webkit-scrollbar-track {
-    background: #f0f0f0; 
-    border-radius: 10px;
-}
-.causes-grid::-webkit-scrollbar-thumb {
-    background: var(--primary-color); 
-    border-radius: 10px;
+    margin-top: 40px;
+    align-items: stretch; /* Ensures all cards match in height */
 }
 
+/* Base Card Styling */
 .cause-card {
-    min-width: calc(33.333% - 20px);
-    scroll-snap-align: start;
-    flex: 0 0 auto;
-    background: var(--white);
-    border-radius: 10px;
+    background: #ffffff;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
-    height: auto;
-    align-self: stretch;
+    height: 100%; /* Important to match heights in the slider */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cause-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Image Scaling & Fix for Excess Zoom */
+.cause-img {
+    width: 100%;
+    height: 260px; /* Reduced fixed height to zoom out and show more of the shot */
+    overflow: hidden;
+    position: relative;
 }
 
 .cause-img img {
     width: 100%;
-    height: auto;
-    aspect-ratio: 3/2;
-    object-fit: cover;
-    object-position: center;
+    height: 100%;
+    object-fit: cover; /* Keeps aspect ratio perfectly balanced */
+    object-position: center 20%; /* Shifts the focal point upward so faces aren't cut off */
+    transition: scale 0.5s ease;
 }
 
+.cause-card:hover .cause-img img {
+    scale: 1.04; /* Very subtle, non-intrusive hover zoom */
+}
+
+/* Content Area Fixes */
 .cause-content {
-    padding: 35px 30px;
-    position: relative;
+    padding: 28px 24px;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    flex-grow: 1; /* Forces text containers to align equally */
+    justify-content: space-between; /* Pushes the button to the bottom */
+}
+
+.cause-content h3 {
+    font-size: 1.35rem;
+    color: #1a1a1a;
+    margin-bottom: 12px;
+}
+
+.cause-content p {
+    font-size: 0.95rem;
+    color: #555555;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    flex-grow: 1; /* Ensures text takes up proportional space */
 }
 
 .cause-content .badge {
@@ -605,25 +618,19 @@ ul {
     margin: 0;
 }
 
-.cause-content h3 {
-    font-size: 22px;
-    margin: 20px 0 15px;
-    line-height: 1.4;
-    font-weight: 700;
-}
-
-.cause-content p {
-    color: var(--text-muted);
-    font-size: 15px;
-    margin-bottom: 25px;
-}
-
 .cause-content .progress-container {
     margin-bottom: 35px;
 }
 
-.cause-content .btn {
-    margin-top: auto;
+/* Button UI */
+.btn-full {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.3s ease;
 }
 
 /* Responsive design adjustments */
@@ -662,13 +669,24 @@ html, body {
 }
 
 @media (max-width: 768px) {
-    /* Causes Grid - Horizontal Scroll tweaks for mobile */
+    /* Mobile & Tablet Fluidity (Preventing the "Stacked Brick" Look) */
     .causes-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
         gap: 20px;
+        padding: 10px 5px 25px 5px;
+        -webkit-overflow-scrolling: touch;
     }
+
     .cause-card {
-        min-width: 85%;
+        min-width: 85vw;
         scroll-snap-align: center;
+        flex-shrink: 0;
+    }
+    
+    .cause-img {
+        height: 220px;
     }
 
     /* Stats Section - 2x2 grid instead of 1 column stack */

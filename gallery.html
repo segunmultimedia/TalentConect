@@ -4,29 +4,365 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery | J Mime Ministry</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        .page-hero { height: 400px; min-height: auto; background-image: url('https://images.pixieset.com/330523111/305b2783b4d37be00e0eae50216c7f28-xxlarge.jpg'); background-size: cover; background-position: center 25%; }
-        .gallery-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 20px; padding: 60px 0 20px; scrollbar-width: thin; }
-        .gallery-grid::-webkit-scrollbar { height: 6px; }
-        .gallery-grid::-webkit-scrollbar-track { background: #f0f0f0; border-radius: 10px; }
-        .gallery-grid::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 10px; }
-        .gallery-item { position: relative; border-radius: 10px; overflow: hidden; cursor: pointer; aspect-ratio: 4/3; min-width: calc(33.333% - 15px); scroll-snap-align: start; flex: 0 0 auto; }
-        @media (max-width: 992px) { .gallery-item { min-width: calc(50% - 10px); } }
-        @media (max-width: 768px) { .gallery-item { min-width: 85%; scroll-snap-align: center; } }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.5s ease; }
-        .gallery-item:hover img { transform: scale(1.1); }
-        .gallery-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; color: white; font-size: 32px; }
-        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        /* Base Reset & Variables */
+        :root {
+            --primary-color: #0d5c3a;
+            --primary-hover: #0a462c;
+            --text-main: #1a1a1a;
+            --text-muted: #555555;
+            --bg-body: #fafafa;
+            --white: #ffffff;
+            --radius-lg: 16px;
+            --radius-sm: 8px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: 'Sora', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Top Bar Styling */
+        .top-bar {
+            background: #111111;
+            color: #bbbbbb;
+            font-size: 13px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .top-bar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-info span {
+            margin-right: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .social-icons a {
+            color: #bbbbbb;
+            margin-left: 16px;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Header Navigation */
+        .header {
+            background: var(--white);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+            padding: 18px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            color: var(--text-main);
+            font-size: 20px;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 36px;
+            width: auto;
+        }
+
+        .nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 15px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav a:hover, .nav a.active {
+            color: var(--primary-color);
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav a:hover::after, .nav a.active::after {
+            width: 100%;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            padding: 10px 24px;
+            border-radius: var(--radius-sm);
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(13, 92, 58, 0.2);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: var(--text-main);
+        }
+
+        /* Hero Header Section */
+        .page-hero { 
+            height: 340px; 
+            background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)), url('https://images.pixieset.com/330523111/305b2783b4d37be00e0eae50216c7f28-xxlarge.jpg'); 
+            background-size: cover; 
+            background-position: center 25%; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero-inner h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .hero-inner p {
+            font-size: 1.15rem;
+            color: #eeeeee;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+
+        /* Gallery Grid Area */
+        .gallery-section {
+            padding: 60px 0 80px;
+        }
+
+        .gallery-grid { 
+            display: flex; 
+            overflow-x: auto; 
+            scroll-snap-type: x mandatory; 
+            gap: 24px; 
+            padding: 10px 4px 30px; 
+            scrollbar-width: thin; 
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .gallery-grid::-webkit-scrollbar { 
+            height: 6px; 
+        }
+
+        .gallery-grid::-webkit-scrollbar-track { 
+            background: #eef2f0; 
+            border-radius: 10px; 
+        }
+
+        .gallery-grid::-webkit-scrollbar-thumb { 
+            background: var(--primary-color); 
+            border-radius: 10px; 
+        }
+
+        /* Limited Sizing & Elegant Proportions */
+        .gallery-item { 
+            position: relative; 
+            border-radius: var(--radius-lg); 
+            overflow: hidden; 
+            cursor: pointer; 
+            aspect-ratio: 4/5; 
+            min-width: 290px;
+            max-width: 320px;
+            max-height: 400px;
+            scroll-snap-align: start; 
+            flex: 0 0 auto; 
+            background: #eaeaea;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+            transition: var(--transition);
+        }
+
+        /* Controlled Scaling (Subject visible & uncropped) */
+        .gallery-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            object-position: center 20%; 
+            transition: transform 0.6s ease; 
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        .gallery-item:hover img { 
+            transform: scale(1.04); 
+        }
+
+        /* Modern Gradient Card Overlay */
+        .gallery-overlay { 
+            position: absolute; 
+            inset: 0; 
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 50%); 
+            display: flex; 
+            align-items: flex-end; 
+            justify-content: center; 
+            padding-bottom: 24px;
+            opacity: 0; 
+            transition: var(--transition); 
+            color: var(--white); 
+            font-size: 32px; 
+        }
+
+        .gallery-item:hover .gallery-overlay { 
+            opacity: 1; 
+        }
+
+        /* Footer Section */
+        .footer {
+            background-color: #111111; 
+            color: #777777; 
+            padding: 30px 0; 
+            margin-top: auto; 
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .footer div {
+            font-size: 14px;
+            letter-spacing: 0.2px;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 992px) {
+            .nav { display: none; } /* Standard dynamic hide for toggle logic */
+            .mobile-toggle { display: block; }
+            .header-inner .btn-outline { display: none; }
+
+            /* Navigation menu when activated */
+            .nav.active {
+                display: block;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--white);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                padding: 24px;
+                border-top: 1px solid #f0f0f0;
+            }
+
+            .nav.active ul {
+                flex-direction: column;
+                gap: 18px;
+            }
+
+            .gallery-item { 
+                min-width: 270px;
+                max-width: 290px;
+                max-height: 360px;
+            } 
+        }
+
+        @media (max-width: 768px) { 
+            .top-bar-inner {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+            .contact-info span { margin: 0 10px; }
+            .social-icons a { margin: 0 8px; }
+
+            .page-hero { height: 280px; }
+            .hero-inner h1 { font-size: 2.6rem; }
+            .hero-inner p { font-size: 1rem; }
+
+            .gallery-item { 
+                min-width: 80vw; 
+                max-width: 300px;
+                max-height: 375px;
+                scroll-snap-align: center; 
+            } 
+
+            .gallery-grid {
+                gap: 16px;
+                padding-top: 15px;
+            }
+        }
     </style>
 </head>
-<body style="display: flex; flex-direction: column; min-height: 100vh;">
-    <!-- Top Bar & Header -->
+<body>
+
     <div class="top-bar">
         <div class="container top-bar-inner">
             <div class="contact-info">
@@ -42,12 +378,12 @@
         </div>
     </div>
 
-    <header class="header" style="background: rgba(0,0,0,0.3);">
+    <header class="header">
         <div class="container header-inner">
-            <div class="logo">
-                <img src="j mime logo.png" alt="J Mime Ministry" style="height: 40px;">
+            <a href="index.html" class="logo">
+                <img src="j mime logo.png" alt="J Mime Ministry Logo">
                 <span>J Mime Ministry</span>
-            </div>
+            </a>
             <nav class="nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -58,64 +394,87 @@
                 </ul>
             </nav>
             <a href="contact.html" class="btn btn-outline">Join Us</a>
-            <button class="mobile-toggle" aria-label="Toggle Navigation"><i class="fas fa-bars"></i></button>
+            <button class="mobile-toggle" aria-label="Toggle Navigation">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
-
-
-    <section class="hero page-hero fade-in">
-        <div class="container hero-inner text-center" style="justify-content: center; margin-top: 40px;">
-            <div class="hero-content text-center" style="max-width: 800px; margin: 0 auto;">
-                <h1 class="fade-in fade-in-delay-1">Gallery</h1>
-                <p class="fade-in fade-in-delay-2">Moments of worship captured in motion.</p>
-            </div>
+    <section class="page-hero">
+        <div class="container hero-inner">
+            <h1>Gallery</h1>
+            <p>Capturing the power, grace, and spiritual flow of movement.</p>
         </div>
     </section>
 
-    <section class="fade-in">
+    <section class="gallery-section">
         <div class="container">
             <div class="gallery-grid">
-                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/50ce112527922e39971fb07aed73e055-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-play-circle"></i></div></div>
-                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/878daee974d0b0fb61affca8f62dcce4-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
-                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/8fe66b89c212285608a0f39cddcc1bf3-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
-                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/d035ee1ab0c5744cadb85b2e655705c4-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-play-circle"></i></div></div>
-                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/1c8f7d77d4323f9cdf0689af5a2a2b30-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
-                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/b3ee693aaf597a1d3618ac610fa71725-xlarge.JPG" style="object-position: center top;"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <a href="https://images.pixieset.com/330523111/50ce112527922e39971fb07aed73e055-xlarge.jpg" target="_blank" class="gallery-item" style="display: block; text-decoration: none;">
+                    <img src="https://images.pixieset.com/330523111/50ce112527922e39971fb07aed73e055-xlarge.jpg" alt="Performance Image 1">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </a>
+                <a href="https://images.pixieset.com/330523111/878daee974d0b0fb61affca8f62dcce4-xxlarge.jpg" target="_blank" class="gallery-item" style="display: block; text-decoration: none;">
+                    <img src="https://images.pixieset.com/330523111/878daee974d0b0fb61affca8f62dcce4-xlarge.jpg" alt="Performance Image 2">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </a>
+                <a href="https://images.pixieset.com/330523111/8fe66b89c212285608a0f39cddcc1bf3-xxlarge.jpg" target="_blank" class="gallery-item" style="display: block; text-decoration: none;">
+                    <img src="https://images.pixieset.com/330523111/8fe66b89c212285608a0f39cddcc1bf3-xlarge.jpg" alt="Performance Image 3">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </a>
+                <a href="https://images.pixieset.com/330523111/d035ee1ab0c5744cadb85b2e655705c4-xlarge.jpg" target="_blank" class="gallery-item" style="display: block; text-decoration: none;">
+                    <img src="https://images.pixieset.com/330523111/d035ee1ab0c5744cadb85b2e655705c4-xlarge.jpg" alt="Performance Image 4">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </a>
+                <a href="https://images.pixieset.com/330523111/1c8f7d77d4323f9cdf0689af5a2a2b30-xxlarge.jpg" target="_blank" class="gallery-item" style="display: block; text-decoration: none;">
+                    <img src="https://images.pixieset.com/330523111/1c8f7d77d4323f9cdf0689af5a2a2b30-xlarge.jpg" alt="Performance Image 5">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </a>
+                <a href="https://images.pixieset.com/330523111/b3ee693aaf597a1d3618ac610fa71725-xxlarge.jpg" target="_blank" class="gallery-item" style="display: block; text-decoration: none;">
+                    <img src="https://images.pixieset.com/330523111/b3ee693aaf597a1d3618ac610fa71725-xlarge.JPG" alt="Performance Image 6">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </a>
             </div>
         </div>
     </section>
 
-    <footer style="background-color: var(--primary-dark); color: var(--white); padding: 30px 0; margin-top: auto; text-align: center;">
+    <footer class="footer">
         <div class="container">
-            <div style="color: rgba(255,255,255,0.5); font-size: 14px;">&copy; 2026 J Mime Ministry.</div>
+            <div>&copy; 2026 J Mime Ministry. All Rights Reserved.</div>
         </div>
     </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const mobileToggle = document.querySelector('.mobile-toggle');
             const nav = document.querySelector('.nav');
             
-            if (mobileToggle) {
+            if (mobileToggle && nav) {
                 mobileToggle.addEventListener('click', () => {
                     nav.classList.toggle('active');
                     const icon = mobileToggle.querySelector('i');
                     if (nav.classList.contains('active')) {
-                        icon.classList.remove('fa-bars');
-                        icon.classList.add('fa-times');
+                        icon.classList.replace('fa-bars', 'fa-times');
                     } else {
-                        icon.classList.remove('fa-times');
-                        icon.classList.add('fa-bars');
+                        icon.classList.replace('fa-times', 'fa-bars');
                     }
                 });
             }
 
-            // Auto-transition Gallery (Gallery grid)
+            // High-performance smooth auto-slide mechanics
             const setupAutoSlider = (selector) => {
                 const slider = document.querySelector(selector);
                 if (!slider) return;
                 
+                let isPaused = false;
+                slider.addEventListener('mouseenter', () => isPaused = true);
+                slider.addEventListener('mouseleave', () => isPaused = false);
+                slider.addEventListener('touchstart', () => isPaused = true, { passive: true });
+                slider.addEventListener('touchend', () => isPaused = false, { passive: true });
+
                 setInterval(() => {
+                    if (isPaused) return;
+                    
                     const firstChild = slider.firstElementChild;
                     if (!firstChild) return;
                     
@@ -124,12 +483,13 @@
                     const gap = parseFloat(style.gap) || 0;
                     const scrollStep = itemWidth + gap;
                     
-                    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
+                    // Return to front gracefully at the edge
+                    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 15) {
                         slider.scrollTo({ left: 0, behavior: 'smooth' });
                     } else {
                         slider.scrollBy({ left: scrollStep, behavior: 'smooth' });
                     }
-                }, 3500); // 3.5 seconds
+                }, 4200); 
             };
             
             setupAutoSlider('.gallery-grid');
