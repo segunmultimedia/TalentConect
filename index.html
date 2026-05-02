@@ -47,16 +47,29 @@
                 </ul>
             </nav>
             <a href="contact.html" class="btn btn-outline">Book Us <i class="fas fa-arrow-right"></i></a>
+            <button class="menu-toggle"><i class="fas fa-bars"></i></button>
         </div>
     </header>
+
+    <!-- Mobile Navigation -->
+    <div class="overlay"></div>
+    <nav class="mobile-nav">
+        <button class="close-menu"><i class="fas fa-times"></i></button>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero fade-in" style="background-image: url('https://images.pixieset.com/330523111/b3ee693aaf597a1d3618ac610fa71725-xlarge.JPG'); background-size: cover; background-position: center top;">
         <div class="container hero-inner">
             <div class="hero-content">
-                <span class="subtitle text-primary fade-in fade-in-delay-1">J Mime Ministry</span>
-                <h1 class="fade-in fade-in-delay-1">We Are Called To Preach The Gospel Through Mime</h1>
-                <p class="fade-in fade-in-delay-2">Experience the power of worship, storytelling, and spiritual connection through movement and grace.</p>
+                <h1 class="fade-in fade-in-delay-1">The Silent Preacher</h1>
+                <p class="fade-in fade-in-delay-2">Propagating the gospel through mime</p>
                 <div class="payment-buttons fade-in fade-in-delay-2">
                     <a href="gallery.html" class="btn btn-secondary"><i class="fas fa-play-circle" style="margin-right: 5px;"></i> Watch Now</a>
                     <a href="contact.html" class="btn btn-outline">Book Us</a>
@@ -129,7 +142,7 @@
                     </div>
                     <div class="cause-content text-center" style="padding: 25px 30px;">
                         <h3>Dance Ministers Conference</h3>
-                        <p>A powerful time of worship and dedication at the annual summit.</p>
+                        <p>a powerful and educative time of learning and empowerment among all gospel dancers in africa</p>
                         <a href="https://segunwebmultimedia.pixieset.com/ghdanceministers/" target="_blank" class="btn btn-secondary btn-full">View Album</a>
                     </div>
                 </div>
@@ -199,41 +212,69 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const stats = document.querySelectorAll('.counter-value');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const target = entry.target;
-                        const targetStr = target.getAttribute('data-target');
-                        let finalValue = parseInt(targetStr.replace(/[^0-9]/g, ''));
-                        
-                        // Special handling for 1m+ to show scrolling to 1m
-                        const isMillion = targetStr.includes('m');
-                        const suffix = targetStr.replace(/[0-9]/g, '');
-                        
-                        let start = 0;
-                        let scrollTarget = isMillion ? 100 : finalValue;
-                        
-                        const updateCounter = () => {
-                            const distance = scrollTarget - start;
-                            start += distance * 0.05; // Smooth ease out
-                            if (distance > 0.5) {
-                                target.innerText = Math.ceil(start) + (isMillion ? 'k+' : suffix);
-                                requestAnimationFrame(updateCounter);
-                            } else {
-                                target.innerText = targetStr;
-                            }
-                        };
-                        updateCounter();
-                        observer.unobserve(target);
-                    }
-                });
-            }, { threshold: 0.5 });
-            
-            stats.forEach(stat => {
-                observer.observe(stat);
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const closeMenu = document.querySelector('.close-menu');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const overlay = document.querySelector('.overlay');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                mobileNav.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
             });
+        }
+
+        if (closeMenu) {
+            const closeFunc = () => {
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            };
+            closeMenu.addEventListener('click', closeFunc);
+            overlay.addEventListener('click', closeFunc);
+
+            // Close menu when a link is clicked
+            const navLinks = document.querySelectorAll('.mobile-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', closeFunc);
+            });
+        }
+
+        // Statistics Counter Animation
+        const stats = document.querySelectorAll('.counter-value');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const targetStr = target.getAttribute('data-target');
+                    let finalValue = parseInt(targetStr.replace(/[^0-9]/g, ''));
+                    
+                    const isMillion = targetStr.includes('m');
+                    const suffix = targetStr.replace(/[0-9]/g, '');
+                    
+                    let start = 0;
+                    let scrollTarget = isMillion ? 100 : finalValue;
+                    
+                    const updateCounter = () => {
+                        const distance = scrollTarget - start;
+                        start += distance * 0.05; // Smooth ease out
+                        if (distance > 0.5) {
+                            target.innerText = Math.ceil(start) + (isMillion ? 'k+' : suffix);
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            target.innerText = targetStr;
+                        }
+                    };
+                    updateCounter();
+                    observer.unobserve(target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        stats.forEach(stat => {
+            observer.observe(stat);
         });
     </script>
 </body>

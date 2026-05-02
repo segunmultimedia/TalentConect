@@ -58,8 +58,22 @@
                 </ul>
             </nav>
             <a href="contact.html" class="btn btn-outline">Join Us</a>
+            <button class="menu-toggle"><i class="fas fa-bars"></i></button>
         </div>
     </header>
+
+    <!-- Mobile Navigation -->
+    <div class="overlay"></div>
+    <nav class="mobile-nav">
+        <button class="close-menu"><i class="fas fa-times"></i></button>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
 
     <section class="hero page-hero fade-in">
         <div class="container hero-inner text-center" style="justify-content: center; margin-top: 40px;">
@@ -111,5 +125,36 @@
             <div style="color: rgba(255,255,255,0.5); font-size: 14px;">&copy; 2026 J Mime Ministry.</div>
         </div>
     </footer>
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const closeMenu = document.querySelector('.close-menu');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const overlay = document.querySelector('.overlay');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                mobileNav.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        if (closeMenu) {
+            const closeFunc = () => {
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            };
+            closeMenu.addEventListener('click', closeFunc);
+            overlay.addEventListener('click', closeFunc);
+
+            // Close menu when a link is clicked
+            const navLinks = document.querySelectorAll('.mobile-nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', closeFunc);
+            });
+        }
+    </script>
 </body>
 </html>
