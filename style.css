@@ -470,11 +470,13 @@ ul {
 
 .sub-img {
     position: absolute;
-    bottom: -30px;
-    right: 0;
+    bottom: 20px;
+    right: -20px;
     width: 280px;
-    border: 15px solid var(--white);
-    border-radius: 25px;
+    border: 12px solid var(--white);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    z-index: 2;
 }
 
 .sub-img img {
@@ -850,13 +852,14 @@ html, body {
     }
 
     .sub-img {
-        position: relative;
-        width: 100%;
-        bottom: 0;
-        right: 0;
-        margin-top: 20px;
-        border: 5px solid var(--white);
+        position: absolute;
+        width: 60%;
+        bottom: -20px;
+        right: -10px;
+        margin-top: 0;
+        border: 8px solid var(--white);
         border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     }
 
     .icon-circle {
