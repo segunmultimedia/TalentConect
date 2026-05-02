@@ -16,10 +16,10 @@
         .gallery-grid::-webkit-scrollbar { height: 6px; }
         .gallery-grid::-webkit-scrollbar-track { background: #f0f0f0; border-radius: 10px; }
         .gallery-grid::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 10px; }
-        .gallery-item { position: relative; border-radius: 10px; overflow: hidden; cursor: pointer; aspect-ratio: 1; min-width: calc(33.333% - 15px); scroll-snap-align: start; flex: 0 0 auto; }
+        .gallery-item { position: relative; border-radius: 10px; overflow: hidden; cursor: pointer; aspect-ratio: 4/3; min-width: calc(33.333% - 15px); scroll-snap-align: start; flex: 0 0 auto; }
         @media (max-width: 992px) { .gallery-item { min-width: calc(50% - 10px); } }
         @media (max-width: 768px) { .gallery-item { min-width: 85%; scroll-snap-align: center; } }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; object-position: top center; transition: transform 0.5s ease; }
         .gallery-item:hover img { transform: scale(1.1); }
         .gallery-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; color: white; font-size: 32px; }
         .gallery-item:hover .gallery-overlay { opacity: 1; }
