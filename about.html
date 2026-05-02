@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | J Mime Ministry</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-hero {
+            height: 400px;
+            min-height: auto;
+            background-image: url('https://images.pixieset.com/330523111/39474002c8173d31e490ee815c38e2b4-xxlarge.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .page-hero .hero-content h1 { font-size: 48px; }
+        .mission-vision { padding: 80px 0; background: var(--bg-light); }
+        .mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .mv-card { background: var(--white); padding: 40px; border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .mv-card h3 { color: var(--primary-color); margin-bottom: 20px; font-size: 24px; }
+        @media (max-width: 768px) { .mv-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+    <!-- Top Bar & Header (Same as index) -->
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <div class="contact-info">
+                <span><i class="fas fa-phone-alt"></i> +233 554320690</span>
+                <span><i class="fas fa-envelope"></i> fjilac@gmail.com</span>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/p/B2tj8funaJh/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@JmimeMinistry" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.facebook.com/share/1DZWYQc2fH/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.tiktok.com/@francisjilac?is_from_webapp=1&sender_device=pc" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <header class="header" style="background: rgba(0,0,0,0.3);">
+        <div class="container header-inner">
+            <div class="logo">
+                <img src="j mime logo.png" alt="J Mime Ministry" style="height: 40px;">
+                <span>J Mime Ministry</span>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="btn btn-outline">Join Us</a>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="hero page-hero fade-in">
+        <div class="container hero-inner text-center" style="justify-content: center; margin-top: 40px;">
+            <div class="hero-content text-center" style="max-width: 800px; margin: 0 auto;">
+                <h1 class="fade-in fade-in-delay-1">Our Story</h1>
+                <p class="fade-in fade-in-delay-2">Discover the heart behind the movement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="mission-vision fade-in">
+        <div class="container">
+            <div class="mv-grid">
+                <div class="mv-card">
+                    <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                    <p>Our mission is to use mime as a dynamic and impactful tool to communicate the Gospel, empower individuals, and mentor the next generation, raising disciples who live out their faith with purpose and excellence.<br><br><em>— Matthew 28:19</em></p>
+                </div>
+                <div class="mv-card">
+                    <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                    <p>To empower the next generation to discover and fulfill their God-given purpose through the transformative art of mime, inspiring lives and drawing hearts closer to God.<br><br><em>— Ephesians 2:10</em></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personal Story -->
+    <section class="about section-padding fade-in">
+        <div class="container about-inner">
+            <div class="about-content" style="flex: 1.5;">
+                <span class="subtitle text-primary">The Genesis</span>
+                <h2>How It All Began</h2>
+                <p>J Mime Ministry began in 2015 in Sunyani, Ghana, through a dance ministry known as F6. What started as dance soon grew into a deeper calling—mime.</p>
+                <p>We began using mime as a powerful tool for evangelism, reaching out to communities and villages, sharing the Gospel beyond words. Along the way, we also embraced preaching to further impact lives and spread God's message.</p>
+                <p>By God's grace, we have ministered on various platforms across Ghana, including major programs attended by national leaders such as the Vice President. We were also privileged to be the first African recipients of a Gospel Mime International Award at the 2021 Gospel Choice Awards in Atlanta, Georgia, USA.</p>
+                <p>Today, we remain committed to using mime to inspire, empower, and draw people closer to God.</p>
+            </div>
+            <div class="about-images" style="flex: 1;">
+                <img src="https://images.pixieset.com/330523111/a7f618ee03db379badbe02589b2f9f32-xxlarge.jpg" alt="How it all began" style="width: 100%; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background-color: var(--primary-dark); color: var(--white); padding: 60px 0 30px; margin-top: auto;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px;">
+                <div>
+                    <div class="logo" style="margin-bottom: 20px;">
+                        <img src="j mime logo.png" alt="J Mime Ministry" style="height: 40px; filter: brightness(0) invert(1);">
+                        <span style="font-family: var(--heading-font); font-size: 24px; font-weight: 800; margin-left: 10px;">J Mime Ministry</span>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px;">Preaching the gospel and inspiring communities through the transformative art of mime.</p>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/p/B2tj8funaJh/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank" style="margin-left: 0; margin-right: 15px;"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@JmimeMinistry" target="_blank" style="margin-left: 0; margin-right: 15px;"><i class="fab fa-youtube"></i></a>
+                        <a href="https://www.facebook.com/share/1DZWYQc2fH/" target="_blank" style="margin-left: 0; margin-right: 15px;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.tiktok.com/@francisjilac?is_from_webapp=1&sender_device=pc" target="_blank" style="margin-left: 0; margin-right: 15px;"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 20px; font-family: var(--heading-font);">Quick Links</h3>
+                    <ul style="color: rgba(255,255,255,0.7); line-height: 2;">
+                        <li><a href="index.html" class="hover-underline">Home</a></li>
+                        <li><a href="about.html" class="hover-underline">About Us</a></li>
+                        <li><a href="gallery.html" class="hover-underline">Gallery</a></li>
+                        <li><a href="events.html" class="hover-underline">Upcoming Events</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 20px; font-family: var(--heading-font);">Contact</h3>
+                    <ul style="color: rgba(255,255,255,0.7); line-height: 2;">
+                        <li><i class="fas fa-map-marker-alt"></i> box 88 Ghana - Sunyani</li>
+                        <li><i class="fas fa-phone-alt"></i> +233 554320690</li>
+                        <li><i class="fas fa-envelope"></i> fjilac@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; text-align: center; color: rgba(255,255,255,0.5); font-size: 14px;">
+                &copy; 2026 J Mime Ministry. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | J Mime Ministry</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-hero { height: 400px; min-height: auto; background-image: url('https://images.pixieset.com/330523111/305b2783b4d37be00e0eae50216c7f28-xxlarge.jpg'); background-size: cover; background-position: center 25%; }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; padding: 60px 0; }
+        .gallery-item { position: relative; border-radius: 10px; overflow: hidden; cursor: pointer; aspect-ratio: 1; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; color: white; font-size: 32px; }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+    </style>
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+    <!-- Top Bar & Header -->
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <div class="contact-info">
+                <span><i class="fas fa-phone-alt"></i> +233 554320690</span>
+                <span><i class="fas fa-envelope"></i> fjilac@gmail.com</span>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/p/B2tj8funaJh/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@JmimeMinistry" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.facebook.com/share/1DZWYQc2fH/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.tiktok.com/@francisjilac?is_from_webapp=1&sender_device=pc" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <header class="header" style="background: rgba(0,0,0,0.3);">
+        <div class="container header-inner">
+            <div class="logo">
+                <img src="j mime logo.png" alt="J Mime Ministry" style="height: 40px;">
+                <span>J Mime Ministry</span>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gallery.html" class="active">Gallery</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="btn btn-outline">Join Us</a>
+        </div>
+    </header>
+
+    <section class="hero page-hero fade-in">
+        <div class="container hero-inner text-center" style="justify-content: center; margin-top: 40px;">
+            <div class="hero-content text-center" style="max-width: 800px; margin: 0 auto;">
+                <h1 class="fade-in fade-in-delay-1">Gallery</h1>
+                <p class="fade-in fade-in-delay-2">Moments of worship captured in motion.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="fade-in">
+        <div class="container">
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/49df743a41b52a32c2dd0f21a220fcad-xxlarge.jpg"><div class="gallery-overlay"><i class="fas fa-play-circle"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/878daee974d0b0fb61affca8f62dcce4-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/9d53c5e8de95d5220c5d5e23631fca1e-xxlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/d035ee1ab0c5744cadb85b2e655705c4-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-play-circle"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/c9a4467389bd93dd1ffedda0cf319760-xxlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/b3ee693aaf597a1d3618ac610fa71725-xlarge.JPG"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background-color: var(--primary-dark); color: var(--white); padding: 30px 0; margin-top: auto; text-align: center;">
+        <div class="container">
+            <div style="color: rgba(255,255,255,0.5); font-size: 14px;">&copy; 2026 J Mime Ministry.</div>
+        </div>
+    </footer>
+</body>
+</html>

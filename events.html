@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events & Bookings | J Mime Ministry</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-hero { height: 400px; min-height: auto; background-image: url('rakad.jpeg'); background-size: cover; background-position: center 40%; }
+        .events-list { padding: 60px 0; }
+        .event-card { display: flex; background: var(--white); border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 30px; overflow: hidden; }
+        .event-date { background: var(--primary-color); color: var(--white); padding: 30px; text-align: center; min-width: 150px; display: flex; flex-direction: column; justify-content: center; }
+        .event-date .day { font-size: 36px; font-weight: 800; line-height: 1; margin-bottom: 5px; }
+        .event-date .month { font-size: 18px; text-transform: uppercase; font-weight: 600; }
+        .event-details { padding: 30px; flex: 1; }
+        .event-details h3 { font-size: 24px; margin-bottom: 10px; color: var(--text-dark); }
+        .event-meta { color: var(--text-muted); margin-bottom: 15px; font-size: 14px; }
+        .event-meta i { margin-right: 5px; color: var(--primary-color); }
+        .event-meta span { margin-right: 20px; display: inline-block; }
+        @media (max-width: 768px) { .event-card { flex-direction: column; } .event-date { padding: 20px; min-width: auto; flex-direction: row; align-items: baseline; gap: 10px; } }
+    </style>
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+    <!-- Top Bar & Header -->
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <div class="contact-info">
+                <span><i class="fas fa-phone-alt"></i> +233 554320690</span>
+                <span><i class="fas fa-envelope"></i> fjilac@gmail.com</span>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/p/B2tj8funaJh/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@JmimeMinistry" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.facebook.com/share/1DZWYQc2fH/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.tiktok.com/@francisjilac?is_from_webapp=1&sender_device=pc" target="_blank"><i class="fab fa-tiktok"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <header class="header" style="background: rgba(0,0,0,0.3);">
+        <div class="container header-inner">
+            <div class="logo">
+                <img src="j mime logo.png" alt="J Mime Ministry" style="height: 40px;">
+                <span>J Mime Ministry</span>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="events.html" class="active">Events</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <a href="contact.html" class="btn btn-outline">Join Us</a>
+        </div>
+    </header>
+
+    <section class="hero page-hero fade-in">
+        <div class="container hero-inner text-center" style="justify-content: center; margin-top: 40px;">
+            <div class="hero-content text-center" style="max-width: 800px; margin: 0 auto;">
+                <h1 class="fade-in fade-in-delay-1">Upcoming Events</h1>
+                <p class="fade-in fade-in-delay-2">Join us in worship across various cities.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="events-list fade-in bg-light">
+        <div class="container">
+            <div class="event-card">
+                <div class="event-date">
+                    <span class="day">17</span>
+                    <span class="month">May</span>
+                </div>
+                <div class="event-details">
+                    <h3>Rakad</h3>
+                    <div class="event-meta">
+                        <span><i class="fas fa-clock"></i> 4:00 PM</span>
+                        <span><i class="fas fa-map-marker-alt"></i> Tamale Global Church</span>
+                    </div>
+                    <p>A powerful time of worship, dance, and spiritual encounter.</p>
+                    <a href="contact.html" class="btn btn-secondary" style="margin-top: 15px; padding: 8px 20px;">Join Us</a>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-date">
+                    <span class="day">3</span>
+                    <span class="month">Jun</span>
+                </div>
+                <div class="event-details">
+                    <h3>Prophetic Dance Night</h3>
+                    <div class="event-meta">
+                        <span><i class="fas fa-clock"></i> 9:00 PM</span>
+                        <span><i class="fas fa-map-marker-alt"></i> CEM - Jubilee Hall</span>
+                    </div>
+                    <p>An evening dedicated entirely to prophetic worship, dance, and spoken word. Free entry.</p>
+                    <a href="contact.html" class="btn btn-secondary" style="margin-top: 15px; padding: 8px 20px;">Join Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background-color: var(--primary-dark); color: var(--white); padding: 30px 0; margin-top: auto; text-align: center;">
+        <div class="container">
+            <div style="color: rgba(255,255,255,0.5); font-size: 14px;">&copy; 2026 J Mime Ministry.</div>
+        </div>
+    </footer>
+</body>
+</html>
