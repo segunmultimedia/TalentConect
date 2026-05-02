@@ -938,3 +938,23 @@ html, body {
 .back-to-top.show {
     display: flex;
 }
+
+/* Gallery Collection Grid */
+.gallery-main-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    padding: 20px 0 60px;
+}
+
+@media (max-width: 992px) {
+    .gallery-main-grid {
+        grid-template-columns: repeat(auto-fill, minmax(45%, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery-main-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -241,9 +241,9 @@
             overflow: hidden; 
             cursor: pointer; 
             aspect-ratio: 4/5; 
-            min-width: 290px;
-            max-width: 320px;
-            max-height: 400px;
+            min-width: 250px;
+            max-width: 280px;
+            max-height: 350px;
             scroll-snap-align: start; 
             flex: 0 0 auto; 
             background: #eaeaea;
@@ -288,6 +288,14 @@
             opacity: 1; 
         }
 
+        /* Gallery Collection Grid */
+        .gallery-main-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            padding: 20px 0 60px;
+        }
+
         /* Footer Section */
         .footer {
             background-color: #111111; 
@@ -328,9 +336,9 @@
             }
 
             .gallery-item { 
-                min-width: 270px;
-                max-width: 290px;
-                max-height: 360px;
+                min-width: 240px;
+                max-width: 260px;
+                max-height: 320px;
             } 
         }
 
@@ -349,14 +357,17 @@
 
             .gallery-item { 
                 min-width: 80vw; 
-                max-width: 300px;
-                max-height: 375px;
+                max-width: 280px;
+                max-height: 350px;
                 scroll-snap-align: center; 
             } 
 
             .gallery-grid {
                 gap: 16px;
                 padding-top: 15px;
+            }
+            .gallery-main-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -409,31 +420,61 @@
 
     <section class="gallery-section">
         <div class="container">
+            <h2 class="text-primary" style="font-size: 32px; margin-bottom: 20px;">Featured Moments</h2>
             <div class="gallery-grid">
-                <a href="https://images.pixieset.com/330523111/50ce112527922e39971fb07aed73e055-xlarge.jpg" target="_blank" class="gallery-item" style="display: block; text-decoration: none;">
+                <div class="gallery-item">
                     <img src="https://images.pixieset.com/330523111/50ce112527922e39971fb07aed73e055-xlarge.jpg" alt="Performance Image 1">
                     <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-                </a>
-                <a href="https://images.pixieset.com/330523111/878daee974d0b0fb61affca8f62dcce4-xxlarge.jpg" target="_blank" class="gallery-item" style="display: block; text-decoration: none;">
+                </div>
+                <div class="gallery-item">
                     <img src="https://images.pixieset.com/330523111/878daee974d0b0fb61affca8f62dcce4-xlarge.jpg" alt="Performance Image 2">
                     <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-                </a>
-                <a href="https://images.pixieset.com/330523111/8fe66b89c212285608a0f39cddcc1bf3-xxlarge.jpg" target="_blank" class="gallery-item" style="display: block; text-decoration: none;">
+                </div>
+                <div class="gallery-item">
                     <img src="https://images.pixieset.com/330523111/8fe66b89c212285608a0f39cddcc1bf3-xlarge.jpg" alt="Performance Image 3">
                     <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-                </a>
-                <a href="https://images.pixieset.com/330523111/d035ee1ab0c5744cadb85b2e655705c4-xlarge.jpg" target="_blank" class="gallery-item" style="display: block; text-decoration: none;">
+                </div>
+                <div class="gallery-item">
                     <img src="https://images.pixieset.com/330523111/d035ee1ab0c5744cadb85b2e655705c4-xlarge.jpg" alt="Performance Image 4">
                     <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-                </a>
-                <a href="https://images.pixieset.com/330523111/1c8f7d77d4323f9cdf0689af5a2a2b30-xxlarge.jpg" target="_blank" class="gallery-item" style="display: block; text-decoration: none;">
+                </div>
+                <div class="gallery-item">
                     <img src="https://images.pixieset.com/330523111/1c8f7d77d4323f9cdf0689af5a2a2b30-xlarge.jpg" alt="Performance Image 5">
                     <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-                </a>
-                <a href="https://images.pixieset.com/330523111/b3ee693aaf597a1d3618ac610fa71725-xxlarge.jpg" target="_blank" class="gallery-item" style="display: block; text-decoration: none;">
+                </div>
+                <div class="gallery-item">
                     <img src="https://images.pixieset.com/330523111/b3ee693aaf597a1d3618ac610fa71725-xlarge.JPG" alt="Performance Image 6">
                     <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
-                </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section" style="background-color: #f0f4f2;">
+        <div class="container">
+            <h2 class="text-primary" style="font-size: 32px; margin-bottom: 30px;">Gallery Collection</h2>
+            <div class="gallery-main-grid">
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/5d81e6762e7430a3a0910142ded65eee-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/9936465ed3a6ad566eaa2321f07232b5-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/aa10324111e4818509a3140f6878273d-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/9fd02bdf2bc798d33acd7f213a64e785-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/0488889dab088fdeb2feda975fe33686-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/0ca3d942894206ec5d5e96be1367bd8e-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/a7f618ee03db379badbe02589b2f9f32-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/e5dd6d4dfe2372aee9740b64c648f83e-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/84d176d7585feba3dffcbd7b0174943c-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/6a45e98a170892d814a842f9ed8988cc-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/462c1c15b13f34ce99ebb64ea5d136ea-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/a9b3acc1a18251daf88c71cad791d511-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/404d8ea73dccd8b4677835b6fbb86e81-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/7bd35285935dc09ab74f99d57452a7c7-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/958eb25babeab47c84929c4721b49b08-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/9c14fe74fe824247a428dbf75ae4f122-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/31fef1f97f44a4cc5c23f74e9012235d-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/d4567a2ad82d649e87b883a9f1f2d78a-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/e6e52a7e42cf2a151f18000a71c3ef42-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/39474002c8173d31e490ee815c38e2b4-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                <div class="gallery-item"><img src="https://images.pixieset.com/330523111/a08c4a880038b293a9f0f9a062d4e185-xlarge.jpg"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
             </div>
         </div>
     </section>
