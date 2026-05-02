@@ -63,6 +63,14 @@ ul {
     display: inline-block;
 }
 
+.responsive-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
 /* Buttons */
 .btn {
     display: inline-block;
@@ -608,13 +616,19 @@ ul {
     margin-top: 10px;
 }
 
-/* Responsive design adjustments could be added here */
+/* Responsive design adjustments */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 @media (max-width: 992px) {
     .cause-card {
         min-width: calc(50% - 15px);
     }
     .about-inner {
         flex-direction: column;
+        gap: 40px;
     }
     .hero-inner {
         flex-direction: column;
@@ -623,6 +637,10 @@ ul {
     }
     .hero-content {
         max-width: 100%;
+        margin-bottom: 20px;
+    }
+    .hero-card {
+        margin: 0 auto;
     }
 }
 
@@ -664,6 +682,7 @@ ul {
         justify-content: space-between;
         padding: 0 10px;
     }
+
     .contact-info {
         flex-direction: row;
         gap: 15px;
@@ -740,17 +759,37 @@ ul {
         min-height: auto;
         padding: 100px 0 60px; /* space for fixed header */
     }
+
     .hero-inner {
         margin-top: 0;
     }
+
     .hero-content h1 {
         font-size: 32px;
         margin-bottom: 15px;
+        line-height: 1.2;
     }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
     .hero-card {
         width: 100%;
-        padding: 25px 20px;
+        max-width: 100%;
+        padding: 30px 20px;
     }
+
+    .payment-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
     .stats {
         margin-top: -30px;
     }
@@ -762,10 +801,31 @@ ul {
         gap: 15px;
         align-items: flex-end;
     }
+
+    .stats-inner {
+        flex-direction: column;
+    }
+
+    .stat-item {
+        border-right: none;
+        border-bottom: 1px solid #f0f0f0;
+        padding: 30px 20px;
+    }
+
+    .stat-action {
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .about-images {
+        width: 100%;
+    }
+
     .main-img {
         padding-right: 0;
         flex: 2;
     }
+
     .sub-img {
         position: static;
         width: auto;
@@ -774,12 +834,15 @@ ul {
         border: 5px solid var(--white);
         border-radius: 10px;
     }
+
     .icon-circle {
         display: none;
     }
+
     .section-padding {
         padding: 60px 0;
     }
+
     .about-content h2, .section-header h2 {
         font-size: 28px;
     }
