@@ -525,12 +525,19 @@
         </div>
     </section>
 
-    <!-- Video Modal -->
     <div id="videoModal" class="video-modal" onclick="if(event.target === this) closeVideoModal()">
         <div class="video-modal-content">
             <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
             <div class="video-container">
                 <iframe id="videoIframe" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <a id="youtubeFallback" href="#" target="_blank" class="btn btn-secondary" style="background: #ff0000; display: inline-flex; align-items: center; gap: 10px;">
+                    <i class="fab fa-youtube"></i> Watch on YouTube
+                </a>
+                <p id="localNotice" style="color: #aaa; font-size: 12px; margin-top: 10px; display: none;">
+                    <i class="fas fa-info-circle"></i> Local file detected. Use "Watch on YouTube" if the player shows an error.
+                </p>
             </div>
         </div>
     </div>
@@ -624,7 +631,16 @@
             window.openVideoModal = (videoId) => {
                 const modal = document.getElementById('videoModal');
                 const iframe = document.getElementById('videoIframe');
-                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                const fallbackLink = document.getElementById('youtubeFallback');
+                const localNotice = document.getElementById('localNotice');
+
+                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+                fallbackLink.href = `https://www.youtube.com/watch?v=${videoId}`;
+                
+                if (window.location.protocol === 'file:') {
+                    localNotice.style.display = 'block';
+                }
+
                 modal.classList.add('active');
                 document.body.style.overflow = 'hidden';
             };
