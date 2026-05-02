@@ -63,6 +63,14 @@ ul {
     display: inline-block;
 }
 
+.responsive-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    display: block;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
 /* Buttons */
 .btn {
     display: inline-block;
@@ -546,13 +554,19 @@ ul {
     margin-top: 10px;
 }
 
-/* Responsive design adjustments could be added here */
+/* Responsive design adjustments */
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
 @media (max-width: 992px) {
     .causes-grid {
         grid-template-columns: repeat(2, 1fr);
     }
     .about-inner {
         flex-direction: column;
+        gap: 40px;
     }
     .hero-inner {
         flex-direction: column;
@@ -561,88 +575,169 @@ ul {
     }
     .hero-content {
         max-width: 100%;
+        margin-bottom: 20px;
+    }
+    .hero-card {
+        margin: 0 auto;
     }
 }
 
 @media (max-width: 768px) {
-    .causes-grid {
-        grid-template-columns: 1fr;
+    .container {
+        padding: 0 15px;
     }
-    .stats-inner {
-        flex-direction: column;
-    }
-    .stat-item {
-        border-right: none;
-        border-bottom: 1px solid #f0f0f0;
-        padding: 30px 20px;
-    }
-    .nav ul {
-        display: none;
-    }
+
     .top-bar-inner {
         flex-direction: column;
         gap: 10px;
         text-align: center;
     }
+
     .contact-info {
         display: flex;
         flex-direction: column;
         gap: 8px;
     }
+
     .contact-info span {
         margin-right: 0;
     }
+
     .header {
         position: relative;
         top: 0;
-        background: rgba(0,0,0,0.4);
+        background: var(--primary-dark);
+        padding: 10px 0;
     }
+
     .header-inner {
-        padding: 15px 0;
+        padding: 10px 0;
         flex-direction: column;
         gap: 15px;
+        text-align: center;
     }
+
     .logo {
-        font-size: 28px;
+        font-size: 24px;
+        justify-content: center;
     }
+
+    .nav ul {
+        display: none; /* Consider adding a mobile menu button later */
+    }
+
+    .header .btn-outline {
+        display: none; /* Hide top CTA on small screens to save space */
+    }
+
     .hero {
         height: auto;
         min-height: auto;
-        padding: 60px 0;
+        padding: 100px 0 60px;
+        background-attachment: scroll; /* Fix for mobile background-attachment: fixed issues */
     }
+
     .hero-inner {
         margin-top: 0;
     }
+
     .hero-content h1 {
-        font-size: 36px;
+        font-size: 32px;
         margin-bottom: 15px;
+        line-height: 1.2;
     }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
     .hero-card {
         width: 100%;
-        padding: 25px 20px;
+        max-width: 100%;
+        padding: 30px 20px;
     }
+
+    .payment-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
     .stats {
-        margin-top: 30px;
+        margin-top: 20px;
+        padding: 0 15px;
     }
+
+    .stats-inner {
+        flex-direction: column;
+    }
+
+    .stat-item {
+        border-right: none;
+        border-bottom: 1px solid #f0f0f0;
+        padding: 30px 20px;
+    }
+
+    .stat-action {
+        text-align: center;
+        padding: 30px 20px;
+    }
+
+    .about-images {
+        width: 100%;
+    }
+
     .main-img {
         padding-right: 0;
     }
+
     .sub-img {
         position: relative;
         width: 100%;
         bottom: 0;
         right: 0;
-        margin-top: 15px;
-        border: none;
+        margin-top: 20px;
+        border: 5px solid var(--white);
+        border-radius: 15px;
     }
+
     .icon-circle {
         display: none;
     }
+
     .section-padding {
         padding: 60px 0;
     }
+
     .about-content h2, .section-header h2 {
-        font-size: 32px;
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .causes-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .cause-img img {
+        height: 200px;
+    }
+
+    footer {
+        padding: 40px 0 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 28px;
+    }
+    .logo span {
+        font-size: 18px;
     }
 }
 
