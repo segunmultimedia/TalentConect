@@ -297,6 +297,29 @@
         }
 
         /* Footer Section */
+        /* Video Gallery Styles */
+        .video-grid { display: grid; gap: 24px; margin-bottom: 40px; }
+        .video-grid.popular { grid-template-columns: repeat(3, 1fr); }
+        .video-grid.recent { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+        
+        .video-card { position: relative; border-radius: 12px; overflow: hidden; cursor: pointer; aspect-ratio: 16/9; background: #000; transition: var(--transition); box-shadow: 0 4px 15px rgba(0,0,0,0.08); }
+        .video-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.85; transition: opacity 0.3s; }
+        .video-card:hover img { opacity: 1; }
+        .video-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        
+        .video-overlay { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: white; font-size: 48px; text-shadow: 0 2px 10px rgba(0,0,0,0.5); opacity: 0.9; transition: transform 0.3s ease; }
+        .video-card:hover .video-overlay { transform: scale(1.1); }
+
+        /* Video Modal Styles */
+        .video-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(5px); }
+        .video-modal.active { display: flex; }
+        .video-modal-content { position: relative; width: 100%; max-width: 1000px; transform: scale(0.9); transition: transform 0.3s ease; }
+        .video-modal.active .video-modal-content { transform: scale(1); }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .video-modal-close { position: absolute; top: -50px; right: 0; background: none; border: none; color: white; font-size: 40px; cursor: pointer; transition: color 0.3s; }
+        .video-modal-close:hover { color: var(--primary-color); }
+
         .footer {
             background-color: #111111; 
             color: #777777; 
@@ -450,6 +473,68 @@
         </div>
     </section>
 
+    <section class="gallery-section" style="background-color: #ffffff; padding-top: 40px;">
+        <div class="container">
+            <h2 class="text-primary" style="font-size: 32px; margin-bottom: 40px; text-align: center;">Video Ministrations</h2>
+            
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                <i class="fas fa-fire text-primary" style="font-size: 20px;"></i>
+                <h3 style="font-size: 22px; color: var(--text-main); margin: 0;">Most Popular</h3>
+            </div>
+            <div class="video-grid popular">
+                <div class="video-card" onclick="openVideoModal('VdkSJELZxP4')">
+                    <img src="https://img.youtube.com/vi/VdkSJELZxP4/hqdefault.jpg" alt="Popular Video 1">
+                    <div class="video-overlay"><i class="fas fa-play-circle"></i></div>
+                </div>
+                <div class="video-card" onclick="openVideoModal('isqbssvOzw8')">
+                    <img src="https://img.youtube.com/vi/isqbssvOzw8/hqdefault.jpg" alt="Popular Video 2">
+                    <div class="video-overlay"><i class="fas fa-play-circle"></i></div>
+                </div>
+                <div class="video-card" onclick="openVideoModal('37xIe4mV6bY')">
+                    <img src="https://img.youtube.com/vi/37xIe4mV6bY/hqdefault.jpg" alt="Popular Video 3">
+                    <div class="video-overlay"><i class="fas fa-play-circle"></i></div>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 10px; margin-top: 60px; margin-bottom: 20px;">
+                <i class="fas fa-clock text-primary" style="font-size: 20px;"></i>
+                <h3 style="font-size: 22px; color: var(--text-main); margin: 0;">Recent Highlights</h3>
+            </div>
+            <div class="video-grid recent">
+                <div class="video-card" onclick="openVideoModal('A3eqxtjU4bI')">
+                    <img src="https://img.youtube.com/vi/A3eqxtjU4bI/hqdefault.jpg" alt="Recent Video 1">
+                    <div class="video-overlay"><i class="fas fa-play-circle"></i></div>
+                </div>
+                <div class="video-card" onclick="openVideoModal('pcPUm3O8XOE')">
+                    <img src="https://img.youtube.com/vi/pcPUm3O8XOE/hqdefault.jpg" alt="Recent Video 2">
+                    <div class="video-overlay"><i class="fas fa-play-circle"></i></div>
+                </div>
+                <div class="video-card" onclick="openVideoModal('LAu-U2hsQiQ')">
+                    <img src="https://img.youtube.com/vi/LAu-U2hsQiQ/hqdefault.jpg" alt="Recent Video 3">
+                    <div class="video-overlay"><i class="fas fa-play-circle"></i></div>
+                </div>
+                <div class="video-card" onclick="openVideoModal('Fg8b6-fSgmU')">
+                    <img src="https://img.youtube.com/vi/Fg8b6-fSgmU/hqdefault.jpg" alt="Recent Video 4">
+                    <div class="video-overlay"><i class="fas fa-play-circle"></i></div>
+                </div>
+                <div class="video-card" onclick="openVideoModal('r20ohB52s9I')">
+                    <img src="https://img.youtube.com/vi/r20ohB52s9I/hqdefault.jpg" alt="Recent Video 5">
+                    <div class="video-overlay"><i class="fas fa-play-circle"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal" onclick="if(event.target === this) closeVideoModal()">
+        <div class="video-modal-content">
+            <button class="video-modal-close" onclick="closeVideoModal()">&times;</button>
+            <div class="video-container">
+                <iframe id="videoIframe" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
     <section class="gallery-section" style="background-color: #f0f4f2;">
         <div class="container">
             <h2 class="text-primary" style="font-size: 32px; margin-bottom: 30px;">Gallery Collection</h2>
@@ -534,6 +619,23 @@
             };
             
             setupAutoSlider('.gallery-grid');
+
+            // Video Modal Logic
+            window.openVideoModal = (videoId) => {
+                const modal = document.getElementById('videoModal');
+                const iframe = document.getElementById('videoIframe');
+                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            window.closeVideoModal = () => {
+                const modal = document.getElementById('videoModal');
+                const iframe = document.getElementById('videoIframe');
+                iframe.src = '';
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            };
         });
     </script>
 </body>
