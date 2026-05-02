@@ -12,8 +12,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .page-hero { height: 400px; min-height: auto; background-image: url('https://images.pixieset.com/330523111/305b2783b4d37be00e0eae50216c7f28-xxlarge.jpg'); background-size: cover; background-position: center 25%; }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; padding: 60px 0; }
-        .gallery-item { position: relative; border-radius: 10px; overflow: hidden; cursor: pointer; aspect-ratio: 1; }
+        .gallery-grid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 20px; padding: 60px 0 20px; scrollbar-width: thin; }
+        .gallery-grid::-webkit-scrollbar { height: 6px; }
+        .gallery-grid::-webkit-scrollbar-track { background: #f0f0f0; border-radius: 10px; }
+        .gallery-grid::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 10px; }
+        .gallery-item { position: relative; border-radius: 10px; overflow: hidden; cursor: pointer; aspect-ratio: 1; min-width: calc(33.333% - 15px); scroll-snap-align: start; flex: 0 0 auto; }
+        @media (max-width: 992px) { .gallery-item { min-width: calc(50% - 10px); } }
+        @media (max-width: 768px) { .gallery-item { min-width: 85%; scroll-snap-align: center; } }
         .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .gallery-item:hover img { transform: scale(1.1); }
         .gallery-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; color: white; font-size: 32px; }
@@ -53,6 +58,7 @@
                 </ul>
             </nav>
             <a href="contact.html" class="btn btn-outline">Join Us</a>
+            <button class="mobile-toggle" aria-label="Toggle Navigation"><i class="fas fa-bars"></i></button>
         </div>
     </header>
 
@@ -83,5 +89,49 @@
             <div style="color: rgba(255,255,255,0.5); font-size: 14px;">&copy; 2026 J Mime Ministry.</div>
         </div>
     </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileToggle = document.querySelector('.mobile-toggle');
+            const nav = document.querySelector('.nav');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', () => {
+                    nav.classList.toggle('active');
+                    const icon = mobileToggle.querySelector('i');
+                    if (nav.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+
+            // Auto-transition Gallery (Gallery grid)
+            const setupAutoSlider = (selector) => {
+                const slider = document.querySelector(selector);
+                if (!slider) return;
+                
+                setInterval(() => {
+                    const firstChild = slider.firstElementChild;
+                    if (!firstChild) return;
+                    
+                    const itemWidth = firstChild.offsetWidth;
+                    const style = window.getComputedStyle(slider);
+                    const gap = parseFloat(style.gap) || 0;
+                    const scrollStep = itemWidth + gap;
+                    
+                    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
+                        slider.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        slider.scrollBy({ left: scrollStep, behavior: 'smooth' });
+                    }
+                }, 3500); // 3.5 seconds
+            };
+            
+            setupAutoSlider('.gallery-grid');
+        });
+    </script>
 </body>
 </html>
