@@ -51,18 +51,6 @@
         </div>
     </header>
 
-    <!-- Mobile Navigation -->
-    <div class="overlay"></div>
-    <nav class="mobile-nav">
-        <button class="close-menu"><i class="fas fa-times"></i></button>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
 
     <!-- Hero Section -->
     <section class="hero fade-in">
@@ -218,19 +206,7 @@
     </footer>
 
     <script>
-        // Mobile Menu Toggle
-        const menuToggle = document.querySelector('.menu-toggle');
-        const closeMenu = document.querySelector('.close-menu');
-        const mobileNav = document.querySelector('.mobile-nav');
-        const overlay = document.querySelector('.overlay');
-
-        if (menuToggle) {
-            menuToggle.addEventListener('click', () => {
-                mobileNav.classList.add('active');
-                overlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            });
-
+        document.addEventListener('DOMContentLoaded', () => {
             // Mobile Menu Toggle
             const mobileToggle = document.querySelector('.mobile-toggle');
             const nav = document.querySelector('.nav');
