@@ -360,6 +360,7 @@ ul {
 .payment-buttons {
     display: flex;
     gap: 15px;
+    justify-content: flex-start;
 }
 
 .btn-pay {
@@ -634,6 +635,9 @@ html, body {
         flex-direction: column;
         gap: 40px;
         text-align: center;
+    }
+    .payment-buttons {
+        justify-content: center;
     }
     .hero-content {
         max-width: 100%;
