@@ -893,7 +893,114 @@ html, body {
     }
 }
 
-/* Animations */
+/* =============================================
+   HERO TEXT SPLIT ANIMATION
+   ============================================= */
+
+/* Each word in the hero heading is wrapped in .word-wrap > .word */
+.hero-title .word-wrap {
+    overflow: hidden;
+    display: inline-block;
+    margin-right: 0.25em;
+    vertical-align: bottom;
+}
+
+.hero-title .word {
+    display: inline-block;
+    transform: translateY(110%);
+    opacity: 0;
+    animation: wordSlideUp 0.75s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes wordSlideUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Hero subtitle typewriter line */
+.hero-subtitle {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    opacity: 0;
+    animation: typeReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 1.2s;
+    border-right: 2px solid rgba(255,255,255,0.7);
+}
+
+@keyframes typeReveal {
+    0%   { width: 0; opacity: 1; }
+    99%  { border-right-color: rgba(255,255,255,0.7); }
+    100% { width: 100%; opacity: 1; border-right-color: transparent; }
+}
+
+/* Hero buttons stagger in */
+.hero-btn-group {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroBtnIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 1.8s;
+}
+
+@keyframes heroBtnIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Glowing accent line under h1 */
+.hero-accent-line {
+    display: block;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), #34d399);
+    border-radius: 2px;
+    margin: 12px 0 20px 0;
+    animation: accentGrow 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation-delay: 1.1s;
+    box-shadow: 0 0 12px rgba(52, 211, 153, 0.6);
+}
+
+@keyframes accentGrow {
+    to { width: 80px; }
+}
+
+/* =============================================
+   SCROLL REVEAL ANIMATIONS
+   ============================================= */
+
+.reveal {
+    opacity: 0;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+}
+
+.reveal.slide-up    { transform: translateY(60px); }
+.reveal.slide-left  { transform: translateX(-60px); }
+.reveal.slide-right { transform: translateX(60px); }
+.reveal.zoom-in     { transform: scale(0.88); }
+.reveal.fade-only   { transform: none; }
+
+.reveal.visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* Stagger delays for child items */
+.reveal-stagger > * {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-stagger.visible > *:nth-child(1) { transition-delay: 0s;    opacity: 1; transform: none; }
+.reveal-stagger.visible > *:nth-child(2) { transition-delay: 0.15s; opacity: 1; transform: none; }
+.reveal-stagger.visible > *:nth-child(3) { transition-delay: 0.3s;  opacity: 1; transform: none; }
+.reveal-stagger.visible > *:nth-child(4) { transition-delay: 0.45s; opacity: 1; transform: none; }
+
+/* Legacy fade-in classes kept for compatibility */
 .fade-in {
     animation: fadeIn 1.2s ease-in-out forwards;
     opacity: 0;

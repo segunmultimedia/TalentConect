@@ -53,7 +53,7 @@
 
 
     <!-- Hero Section -->
-    <section class="hero fade-in">
+    <section class="hero">
         <div class="hero-bg-slider">
             <div class="hero-bg slide-1"></div>
             <div class="hero-bg slide-2"></div>
@@ -61,20 +61,20 @@
         </div>
         <div class="container hero-inner">
             <div class="hero-content">
-             
-                <h1 class="fade-in fade-in-delay-1" style="font-size: 48px; line-height: 1.2;">The Silent Preacher</h1>
-                <p class="fade-in fade-in-delay-2">Propagating the gospel through mime.</p>
-                <div class="payment-buttons" style="margin-top: 30px;">
-                    <a href="gallery.html" class="btn btn-secondary fade-in fade-in-delay-2" style="flex: 0 1 auto;"><i class="fas fa-play-circle" style="margin-right: 5px;"></i> Watch Now</a>
-                    <a href="contact.html" class="btn btn-outline fade-in fade-in-delay-2" style="flex: 0 1 auto; align-items: center; justify-content: center; display: flex;">Book Us</a>
+                <h1 class="hero-title" style="font-size: 48px; line-height: 1.2;">The Silent Preacher</h1>
+                <span class="hero-accent-line"></span>
+                <p class="hero-subtitle">Propagating the gospel through mime.</p>
+                <div class="payment-buttons hero-btn-group" style="margin-top: 30px;">
+                    <a href="gallery.html" class="btn btn-secondary" style="flex: 0 1 auto;"><i class="fas fa-play-circle" style="margin-right: 5px;"></i> Watch Now</a>
+                    <a href="contact.html" class="btn btn-outline" style="flex: 0 1 auto; align-items: center; justify-content: center; display: flex;">Book Us</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Stats / Intro Section -->
-    <section class="stats fade-in">
-        <div class="container stats-inner">
+    <section class="stats">
+        <div class="container stats-inner reveal-stagger">
             <div class="stat-item">
                 <h2 class="text-primary counter-value" data-target="50+">0+</h2>
                 <p>Ministrations</p>
@@ -97,9 +97,9 @@
     </section>
 
     <!-- About Section -->
-    <section class="about section-padding fade-in">
+    <section class="about section-padding">
         <div class="container about-inner">
-            <div class="about-images">
+            <div class="about-images reveal slide-left">
                 <div class="img-wrapper main-img">
                     <img src="https://images.pixieset.com/330523111/a7f618ee03db379badbe02589b2f9f32-xxlarge.jpg" alt="Dance Ministry">
                 </div>
@@ -107,9 +107,9 @@
                     <img src="https://images.pixieset.com/330523111/878daee974d0b0fb61affca8f62dcce4-xlarge.jpg" alt="Worship">
                 </div>
             </div>
-            <div class="about-content">
+            <div class="about-content reveal slide-right">
                 <span class="subtitle text-primary">About Our Ministry</span>
-                <h2>Movement That Inspires & Transforms</h2>
+                <h2>Movement That Inspires &amp; Transforms</h2>
                 <ul class="features-list">
                     <li><i class="fas fa-check-circle text-primary"></i> Christ-centered choreography</li>
                     <li><i class="fas fa-check-circle text-primary"></i> Inspiring youth and the church</li>
@@ -123,14 +123,14 @@
     </section>
 
     <!-- Featured Gallery Section -->
-    <section class="causes section-padding bg-light fade-in">
+    <section class="causes section-padding bg-light">
         <div class="container">
-            <div class="section-header text-center">
+            <div class="section-header text-center reveal slide-up">
                 <span class="subtitle text-primary">Gallery</span>
                 <h2>Moments of Worship<br>In Motion</h2>
             </div>
             
-            <div class="causes-grid">
+            <div class="causes-grid reveal-stagger">
                 <div class="cause-card">
                     <div class="cause-img">
                         <img src="https://images.pixieset.com/330523111/6ff1e330144ddfa548211e9b6c6d4d76-xlarge.jpg" alt="Dance Ministers Conference">
@@ -168,13 +168,13 @@
     </section>
 
     <!-- Achievement Section -->
-    <section class="section-padding fade-in" style="background: var(--primary-dark); padding-top: 60px; padding-bottom: 60px;">
+    <section class="section-padding" style="background: var(--primary-dark); padding-top: 60px; padding-bottom: 60px;">
         <div class="container">
-            <div class="section-header text-center" style="margin-bottom: 40px;">
+            <div class="section-header text-center reveal slide-up" style="margin-bottom: 40px;">
                 <span class="subtitle" style="color: #a7f3d0; text-transform: uppercase; letter-spacing: 1px;">Our Milestones</span>
                 <h2 style="color: white; font-size: 42px; font-weight: 800;">Achievements</h2>
             </div>
-            <div style="max-width: 860px; margin: 0 auto; background: white; border-radius: 16px; overflow: hidden; display: flex; box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
+            <div class="reveal zoom-in" style="max-width: 860px; margin: 0 auto; background: white; border-radius: 16px; overflow: hidden; display: flex; box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
                 <div style="flex: 1; min-height: 320px; overflow: hidden;">
                     <img src="https://images.pixieset.com/330523111/b3ee693aaf597a1d3618ac610fa71725-xlarge.JPG" alt="Achievement" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
@@ -233,7 +233,38 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            // ============================================
+            // HERO WORD SPLIT ANIMATION
+            // ============================================
+            const heroTitle = document.querySelector('.hero-title');
+            if (heroTitle) {
+                const text = heroTitle.textContent.trim();
+                const words = text.split(' ');
+                heroTitle.innerHTML = words.map((word, i) => {
+                    const delay = (i * 0.12).toFixed(2);
+                    return `<span class="word-wrap"><span class="word" style="animation-delay:${delay}s">${word}</span></span>`;
+                }).join(' ');
+            }
+
+            // ============================================
+            // SCROLL REVEAL — IntersectionObserver
+            // ============================================
+            const revealEls = document.querySelectorAll('.reveal, .reveal-stagger');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+            revealEls.forEach(el => revealObserver.observe(el));
+
+            // ============================================
             // Mobile Menu Toggle
+            // ============================================
             const mobileToggle = document.querySelector('.mobile-toggle');
             const nav = document.querySelector('.nav');
             
@@ -251,7 +282,9 @@
                 });
             }
 
-            // Auto-transition Gallery (Causes grid)
+            // ============================================
+            // Auto-transition Gallery Slider
+            // ============================================
             const setupAutoSlider = (selector) => {
                 const slider = document.querySelector(selector);
                 if (!slider) return;
@@ -270,12 +303,14 @@
                     } else {
                         slider.scrollBy({ left: scrollStep, behavior: 'smooth' });
                     }
-                }, 3500); // 3.5 seconds
+                }, 3500);
             };
             
             setupAutoSlider('.causes-grid');
 
+            // ============================================
             // Statistics Counter Animation
+            // ============================================
             const stats = document.querySelectorAll('.counter-value');
             if (stats.length > 0) {
                 const observer = new IntersectionObserver((entries) => {
@@ -293,7 +328,7 @@
                             
                             const updateCounter = () => {
                                 const distance = scrollTarget - start;
-                                start += distance * 0.05; // Smooth ease out
+                                start += distance * 0.05;
                                 if (distance > 0.5) {
                                     target.innerText = Math.ceil(start) + (isMillion ? 'k+' : suffix);
                                     requestAnimationFrame(updateCounter);
@@ -307,9 +342,7 @@
                     });
                 }, { threshold: 0.5 });
                 
-                stats.forEach(stat => {
-                    observer.observe(stat);
-                });
+                stats.forEach(stat => observer.observe(stat));
             }
         });
 
