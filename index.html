@@ -65,7 +65,7 @@
                 <span class="hero-accent-line"></span>
                 <p class="hero-subtitle">Propagating the gospel through mime.</p>
                 <div class="payment-buttons hero-btn-group" style="margin-top: 30px;">
-                    <a href="gallery.html" class="btn btn-secondary" style="flex: 0 1 auto;"><i class="fas fa-play-circle" style="margin-right: 5px;"></i> Watch Now</a>
+                    <a href="gallery.html#video-ministrations" class="btn btn-secondary" style="flex: 0 1 auto;"><i class="fas fa-play-circle" style="margin-right: 5px;"></i> Watch Now</a>
                     <a href="contact.html" class="btn btn-outline" style="flex: 0 1 auto; align-items: center; justify-content: center; display: flex;">Book Us</a>
                 </div>
             </div>
@@ -168,20 +168,50 @@
     </section>
 
     <!-- Achievement Section -->
-    <section class="section-padding" style="background: var(--primary-dark); padding-top: 60px; padding-bottom: 60px;">
+    <section class="about section-padding achievement-section">
         <div class="container">
-            <div class="section-header text-center reveal slide-up" style="margin-bottom: 40px;">
+            <div class="section-header text-center reveal slide-up" style="margin-bottom: 50px;">
                 <span class="subtitle" style="color: #a7f3d0; text-transform: uppercase; letter-spacing: 1px;">Our Milestones</span>
                 <h2 style="color: white; font-size: 42px; font-weight: 800;">Achievements</h2>
             </div>
-            <div class="reveal zoom-in" style="max-width: 860px; margin: 0 auto; background: white; border-radius: 16px; overflow: hidden; display: flex; box-shadow: 0 20px 50px rgba(0,0,0,0.3);">
-                <div style="flex: 1; min-height: 320px; overflow: hidden;">
-                    <img src="https://images.pixieset.com/330523111/b3ee693aaf597a1d3618ac610fa71725-xlarge.JPG" alt="Achievement" style="width: 100%; height: 100%; object-fit: cover;">
+            <div class="about-inner">
+                <!-- Left: Auto-transitioning image slider -->
+                <div class="about-images reveal slide-left">
+                    <div class="achievement-slider" id="achSlider">
+                        <div class="ach-slide active">
+                            <img src="https://images.pixieset.com/330523111/b3ee693aaf597a1d3618ac610fa71725-xlarge.JPG" alt="Achievement Moment">
+                        </div>
+                        <div class="ach-slide">
+                            <img src="https://images.pixieset.com/330523111/50ce112527922e39971fb07aed73e055-xlarge.jpg" alt="Ministry Performance">
+                        </div>
+                        <div class="ach-slide">
+                            <img src="https://images.pixieset.com/330523111/8fe66b89c212285608a0f39cddcc1bf3-xlarge.jpg" alt="Worship Moment">
+                        </div>
+                        <div class="ach-slide">
+                            <img src="https://images.pixieset.com/330523111/1c8f7d77d4323f9cdf0689af5a2a2b30-xlarge.jpg" alt="Dance Ministry">
+                        </div>
+                    </div>
+                    <!-- Dot indicators -->
+                    <div class="ach-dots" id="achDots">
+                        <button class="ach-dot active" data-index="0"></button>
+                        <button class="ach-dot" data-index="1"></button>
+                        <button class="ach-dot" data-index="2"></button>
+                        <button class="ach-dot" data-index="3"></button>
+                    </div>
                 </div>
-                <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 40px;">
-                    <h3 style="font-size: 1.8rem; margin-bottom: 16px; color: #1a1a1a;">Our Achievements</h3>
-                    <p style="color: #555; font-size: 1rem; line-height: 1.7; margin-bottom: 28px;">Celebrating the milestones, awards, and recognition received for our faithful service through dance and mime ministry across Africa and beyond.</p>
-                    <a href="gallery.html" class="btn btn-secondary" style="align-self: flex-start; background: var(--primary-color); color: white; padding: 12px 28px; border-radius: 30px; font-weight: 600; text-decoration: none;">View Gallery</a>
+
+                <!-- Right: Content -->
+                <div class="about-content reveal slide-right">
+                    <span class="subtitle">Recognized Excellence</span>
+                    <h2>Milestones &amp; Recognition</h2>
+                    <ul class="features-list">
+                        <li><i class="fas fa-trophy"></i> Ghana Dance Ministers Conference</li>
+                        <li><i class="fas fa-star"></i> Ministry across Africa and beyond</li>
+                        <li><i class="fas fa-award"></i> Inspiring thousands through mime</li>
+                        <li><i class="fas fa-hands-praying"></i> Featured at national church events</li>
+                    </ul>
+                    <p>Celebrating the milestones, awards, and recognition received for our faithful service through dance and mime ministry across Africa and beyond. God has been faithful every step of the way.</p>
+                    <a href="gallery.html" class="btn btn-secondary">View Gallery</a>
                 </div>
             </div>
         </div>
@@ -261,6 +291,37 @@
             }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
             revealEls.forEach(el => revealObserver.observe(el));
+
+            // ============================================
+            // ACHIEVEMENT IMAGE SLIDER
+            // ============================================
+            const achSlides = document.querySelectorAll('#achSlider .ach-slide');
+            const achDots   = document.querySelectorAll('#achDots .ach-dot');
+            let achCurrent  = 0;
+            let achTimer;
+
+            function goToSlide(index) {
+                achSlides[achCurrent].classList.remove('active');
+                achDots[achCurrent].classList.remove('active');
+                achCurrent = (index + achSlides.length) % achSlides.length;
+                achSlides[achCurrent].classList.add('active');
+                achDots[achCurrent].classList.add('active');
+            }
+
+            function startAchTimer() {
+                achTimer = setInterval(() => goToSlide(achCurrent + 1), 4000);
+            }
+
+            if (achSlides.length > 0) {
+                startAchTimer();
+                achDots.forEach(dot => {
+                    dot.addEventListener('click', () => {
+                        clearInterval(achTimer);
+                        goToSlide(parseInt(dot.dataset.index));
+                        startAchTimer();
+                    });
+                });
+            }
 
             // ============================================
             // Mobile Menu Toggle
