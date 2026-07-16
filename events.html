@@ -11,7 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .page-hero { height: 400px; min-height: auto; background-image: url('bootcamp.jpeg'); background-size: cover; background-position: center 40%; }
+        .page-hero { height: 400px; min-height: auto; background-image: url('rakad.jpeg'); background-size: cover; background-position: center 40%; }
+        .event-img { width: 300px; flex-shrink: 0; }
+        .event-img img { width: 100%; height: 100%; object-fit: cover; }
         .events-list { padding: 60px 0; }
         .event-card { display: flex; background: var(--white); border-radius: 10px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 30px; overflow: hidden; }
         .event-date { background: var(--primary-color); color: var(--white); padding: 30px; text-align: center; min-width: 150px; display: flex; flex-direction: column; justify-content: center; }
@@ -22,7 +24,7 @@
         .event-meta { color: var(--text-muted); margin-bottom: 15px; font-size: 14px; }
         .event-meta i { margin-right: 5px; color: var(--primary-color); }
         .event-meta span { margin-right: 20px; display: inline-block; }
-        @media (max-width: 768px) { .event-card { flex-direction: column; } .event-date { padding: 20px; min-width: auto; flex-direction: row; align-items: baseline; gap: 10px; } }
+        @media (max-width: 768px) { .event-card { flex-direction: column; } .event-date { padding: 20px; min-width: auto; flex-direction: row; align-items: baseline; gap: 10px; } .event-img { width: 100%; height: 200px; } }
     </style>
 </head>
 <body style="display: flex; flex-direction: column; min-height: 100vh;">
@@ -76,6 +78,9 @@
     <section class="events-list fade-in bg-light">
         <div class="container">
             <div class="event-card">
+                <div class="event-img">
+                    <img src="rakad.jpeg" alt="Rakad Event">
+                </div>
                 <div class="event-date">
                     <span class="day">17</span>
                     <span class="month">May</span>
@@ -92,6 +97,9 @@
             </div>
 
             <div class="event-card">
+                <div class="event-img">
+                    <img src="abi mime.jpg" alt="Prophetic Dance Night">
+                </div>
                 <div class="event-date">
                     <span class="day">3</span>
                     <span class="month">Jun</span>
@@ -103,6 +111,25 @@
                         <span><i class="fas fa-map-marker-alt"></i> CEM - Jubilee Hall</span>
                     </div>
                     <p>An evening dedicated entirely to prophetic worship, dance, and spoken word. Free entry.</p>
+                    <a href="contact.html" class="btn btn-secondary" style="margin-top: 15px; padding: 8px 20px;">Join Us</a>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-img">
+                    <img src="bootcamp.jpeg" alt="Bootcamp">
+                </div>
+                <div class="event-date">
+                    <span class="day">15</span>
+                    <span class="month">Aug</span>
+                </div>
+                <div class="event-details">
+                    <h3>Bootcamp</h3>
+                    <div class="event-meta">
+                        <span><i class="fas fa-clock"></i> 8:00 AM</span>
+                        <span><i class="fas fa-map-marker-alt"></i> TBA</span>
+                    </div>
+                    <p>Join us for an intensive time of training, growth, and spiritual empowerment.</p>
                     <a href="contact.html" class="btn btn-secondary" style="margin-top: 15px; padding: 8px 20px;">Join Us</a>
                 </div>
             </div>
